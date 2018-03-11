@@ -1,3 +1,6 @@
+// .ENV
+require('dotenv').config()
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,10 +12,10 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');
 var pages = require('./routes/pages');
+var imageUpload = require('./routes/imageUpload');
+var imageFromDb = require('./routes/imageFromDb');
+var imageEdit = require('./routes/imageEdit')
 var app = express();
-
-// .ENV
-require('dotenv').config()
 
 // CORS
 var cors = require('cors')
@@ -40,6 +43,9 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/posts', posts);
 app.use('/pages', pages);
+app.use('/imageUpload', imageUpload);
+app.use('/imageFromDb', imageFromDb);
+app.use('/imageEdit', imageEdit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
